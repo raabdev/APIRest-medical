@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <form action="" method="POST"> 
+       <div class="wrap">
+            <select class="btn pt-1 pb-1" id="mutual" name="mutual" required>
+                <option value="0" selected>Mutual</option>
+                <option value="OSDE">OSDE</option> 
+                <option value="IOMA" >IOMA</option> 
+            </select> 
+        
+            <select class="btn pt-1 pb-1" id="opcion" name="opcion" required>
+                <option value="0" selected>Plan</option>
+            </select> 
+        </div>
+    <script>
+    $(document).on("change","#mutual",function(){
+
+    var opcionesOsde = "<option value='0' selected>PLAN</option><option value='1'>210</option><option value='2'>310</option>"
+    var opcionesIoma = "<option value='0' selected>PLAN</option><option value='3'>ioma 1</option><option value='4'>ioma2</option>"
+    var idMutual = $("#mutual option:selected").val();
+
+    if(idMutual == "OSDE")
+        $("#opcion").html(opcionesOsde);
+    else if(idMutual =="IOMA")
+        $("#opcion").html(opcionesIoma);
+    });
+    </script>
+
+{% endblock %}
