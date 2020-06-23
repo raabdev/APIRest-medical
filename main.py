@@ -15,7 +15,11 @@ def turnos():
 
 @app.route('/turnos/asignacion_turnos/', methods = ["GET", "POST"])
 def asignacion_turnos():
-    return render_template('asignacion_turnos.html')
+    if request.method == "POST":
+        return 'joya'
+    else:
+        return render_template('asignacion_turnos.html')
+
 
 
 
