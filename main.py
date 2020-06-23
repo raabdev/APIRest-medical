@@ -13,7 +13,7 @@ def index():
 def turnos():
     return render_template('turnos.html')
 
-@app.route('/turnos/asignacion_turnos/')
+@app.route('/turnos/asignacion_turnos/', methods = ["GET", "POST"])
 def asignacion_turnos():
     return render_template('asignacion_turnos.html')
 
