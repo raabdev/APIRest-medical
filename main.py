@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, url_for
+import pandas as pd
 
 
 #CREAMOS UNA INSTANCIA
