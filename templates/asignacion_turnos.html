@@ -37,22 +37,22 @@
                         </thead>
                         <tbody>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:00"> Lunes 13:00HS 
+                                <input type="radio" name="horario1" value="Lun13:00" id="radio1"> Lunes 13:00HS 
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:15"> Lunes 13:15HS
+                                <input type="radio" name="horario1" value="Lun13:15" id="radio2"> Lunes 13:15HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:30"> Lunes 13:30HS
+                                <input type="radio" name="horario1" value="Lun13:30" id="radio3"> Lunes 13:30HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:45"> Lunes 13:45HS
+                                <input type="radio" name="horario1" value="Lun13:45" id="radio4"> Lunes 13:45HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:00"> Lunes 14:00HS
+                                <input type="radio" name="horario1" value="Lun14:00" id="radio5"> Lunes 14:00HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:15"> Lunes 14:15HS
+                                <input type="radio" name="horario1" value="Lun14:15" id="radio6"> Lunes 14:15HS
                             </td></tr>
                         </tbody>
                     </table>
@@ -79,22 +79,22 @@
                         </thead>
                         <tbody>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:00"> Lunes 13:00HS 
+                                <input type="radio" name="horario2" value="Lun13:00"> Lunes 13:00HS 
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:15"> Lunes 13:15HS
+                                <input type="radio" name="horario2" value="Lun13:15"> Lunes 13:15HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:30"> Lunes 13:30HS
+                                <input type="radio" name="horario2" value="Lun13:30"> Lunes 13:30HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:45"> Lunes 13:45HS
+                                <input type="radio" name="horario2" value="Lun13:45"> Lunes 13:45HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:00"> Lunes 14:00HS
+                                <input type="radio" name="horario2" value="Lun14:00"> Lunes 14:00HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:15"> Lunes 14:15HS
+                                <input type="radio" name="horario2" value="Lun14:15"> Lunes 14:15HS
                             </td></tr>
                         </tbody>
                     </table>
@@ -121,33 +121,53 @@
                         </thead>
                         <tbody>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:00"> Lunes 13:00HS 
+                                <input type="radio" name="horario3" value="Lun13:00"> Lunes 13:00HS 
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:15"> Lunes 13:15HS
+                                <input type="radio" name="horario3" value="Lun13:15"> Lunes 13:15HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:30"> Lunes 13:30HS
+                                <input type="radio" name="horario3" value="Lun13:30"> Lunes 13:30HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun13:45"> Lunes 13:45HS
+                                <input type="radio" name="horario3" value="Lun13:45"> Lunes 13:45HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:00"> Lunes 14:00HS
+                                <input type="radio" name="horario3" value="Lun14:00"> Lunes 14:00HS
                             </td></tr>
                             <tr><td>
-                                <input type="radio" name="horario" value="Lun14:15"> Lunes 14:15HS
+                                <input type="radio" name="horario3" value="Lun14:15"> Lunes 14:15HS
                             </td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        
+        <script>
+            function agregartxt2(){
+                var newt = document.createElement("div");
+                newt.style.cssText='border:8px solid #56aaf3;padding:12px;width:160px;margin:12px 0 12px 0;';                 
+                var t = document.createTextNode("Nuevo contenedor");       
+                newt.appendChild(t);                                         
+                document.getElementById("cont5").appendChild(newt); 
+            }                            
+            </script>
+                <button type="button" onclick="agregartxt2()">Escribir DIV</button><br>
+                <div id="cont5"></div>
 
-        <div class="card card-body">
+
+       <!-- <div class="card card-body" id="seleccionados">
             <h4>Turnos seleccionados:</h4>
-            <table></table>
-        </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#radio1').click(function(){
+                            
+                        }
+                    });
+            </script>
+            
+        </div>-->
 
         <button type="submit" class="btn btn-primary">Confirmar turno</button>
         <a href="/turnos/asignacion_turnos/" class="btn btn-secondary">Cancelar</a>
