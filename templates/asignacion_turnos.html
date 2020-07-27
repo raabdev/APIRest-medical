@@ -6,6 +6,27 @@
 
 
     <script>
+
+       // window.addEventListener("load", inicio);
+
+       /* function inicio(){
+            var dateControl = document.getElementById("fecha1");
+            var date = dateControl.value;
+            alert(date);
+        }*/
+
+        window.addEventListener('change', cambioFecha);
+
+        function cambioFecha(){
+            var dateControl = document.getElementById("fecha1");
+            var date = dateControl.value;
+            tabla = document.getElementById("llenarTabla");
+            tabla.innerHTML = '<input type="radio" name="horario1" value="Lun13:00" id="radio1" onclick="mostrar(this, 1)"> Lunes 13:00HS</td></tr><tr><td><input type="radio" name="horario1" value="Lun13:15" id="radio2" onclick="mostrar(this, 1)"> Lunes 13:15HS</td></tr><tr><td><input type="radio" name="horario1" value="Lun13:30" id="radio3" onclick="mostrar(this, 1)"> Lunes 13:30HS</td></tr><tr><td><input type="radio" name="horario1" value="Lun13:45" id="radio4" onclick="mostrar(this, 1)"> Lunes 13:45HS</td></tr><tr><td><input type="radio" name="horario1" value="Lun14:00" id="radio5" onclick="mostrar(this, 1)"> Lunes 14:00HS</td></tr><tr><td><input type="radio" name="horario1" value="Lun14:15" id="radio6" onclick="mostrar(this, 1)"> Lunes 14:15HS'
+
+        }
+
+        var dateControl = document.querySelector('input[type="date"]');
+
         function mostrar(elem, num){
             if (num == 1){
                 var newdiv = document.getElementById("turno-selec1");
@@ -27,8 +48,6 @@
 
         }
         
-        var dateControl = document.querySelector('input[type="date"]');
-        var date = dateControl.value
 
         
     </script>
@@ -68,14 +87,14 @@
                         </thead>
                         <tbody>
                             <tr><td>
-                                <label for="fecha">Fecha:</label>
+                                <label for="fecha1">Fecha:</label>
 
-                                <input type="date" id="fecha" name="trip-start"
-                                    >
+                                <input type="date" id="fecha1" name="fecha1">
                             </td></tr>
                             <tr><td>
                                 Hora:
                             </td></tr>
+                            <td><tr id="llenarTabla"></tr></td>
                             <!--<tr><td>
                                 <input type="radio" name="horario1" value="Lun13:00" id="radio1" onclick="mostrar(this, 1)"> Lunes 13:00HS 
                             </td></tr>
