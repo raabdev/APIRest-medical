@@ -26,11 +26,11 @@
             
 
         }
-        var newt = document.createElement("div");
-                newt.style.cssText='border:8px solid #56aaf3;padding:12px;width:160px;margin:12px 0 12px 0;';                 
-                var t = document.createTextNode("Nuevo contenedor");       
-                newt.appendChild(t);                                         
-                document.getElementById("cont5").appendChild(newt);
+        
+        var dateControl = document.querySelector('input[type="date"]');
+        var date = dateControl.value
+
+        
     </script>
 
 
@@ -68,6 +68,15 @@
                         </thead>
                         <tbody>
                             <tr><td>
+                                <label for="fecha">Fecha:</label>
+
+                                <input type="date" id="fecha" name="trip-start"
+                                    >
+                            </td></tr>
+                            <tr><td>
+                                Hora:
+                            </td></tr>
+                            <!--<tr><td>
                                 <input type="radio" name="horario1" value="Lun13:00" id="radio1" onclick="mostrar(this, 1)"> Lunes 13:00HS 
                             </td></tr>
                             <tr><td>
@@ -84,7 +93,7 @@
                             </td></tr>
                             <tr><td>
                                 <input type="radio" name="horario1" value="Lun14:15" id="radio6" onclick="mostrar(this, 1)"> Lunes 14:15HS
-                            </td></tr>
+                            </td></tr>-->
                         </tbody>
                     </table>
                     <div id="turno-selec1"></div>
