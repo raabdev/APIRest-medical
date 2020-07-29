@@ -21,6 +21,8 @@ def asignacion_turnos():
         print(resultados)
         return resultados
     else:
+        horarios = pd.read_excel('turnos.xlsx')
+        print(horarios)
         return render_template('asignacion_turnos.html')
 
 
