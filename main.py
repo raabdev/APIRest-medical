@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, url_for
+import html2text
 import pandas as pd
 
 
@@ -23,8 +24,7 @@ def asignacion_turnos():
     else:
         turnos = pd.read_excel('turnos.xlsx')
         turnosHTML = turnos.to_html()
-        print(turnosHTML)
-        return render_template('asignacion_turnos.html', turnos = turnosHTML)
+        return render_template('asignacion_turnos.html', turnos = turnos)
 
 
 
