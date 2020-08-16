@@ -1,16 +1,23 @@
 from flask import Flask, request, render_template, url_for
-import html2text
-import pandas as pd
-import numpy as np
+import sqlite3 as sql
 
 
 #CREAMOS UNA INSTANCIA
 app = Flask(__name__)
 
-#CREAMOS EL DECORADOR
+#RUTAS
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/pacientes')
+def pacientes():
+    con = sql.connect('database.db')
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from pacientes")
+    pacientes = cur.fetchall()
+    return render_template('pacientes.html', pacientes = pacientes)
 
 @app.route('/turnos/')
 def turnos():
@@ -19,16 +26,9 @@ def turnos():
 @app.route('/turnos/asignacion_turnos/', methods = ["GET", "POST"])
 def asignacion_turnos():
     if request.method == "POST":
-        resultados = request.form
-        print(resultados)
-        return resultados
-    else:
-        turnos = pd.read_excel('turnos.xlsx')
-        turnosHTML = turnos.to_html()
-        turnosLibres = turnos.iat[1,2]
-        print('************')
-        print(turnos.iloc[0,1])
-        return render_template('asignacion_turnos.html', turnos = turnos)
+        return "joya"
+    else:       
+        return render_template('asignacion_turnos.html')
 
 
 

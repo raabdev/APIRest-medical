@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<a href="/buscar" class="btn btn-primary">Buscar paciente</a>
+<a href="/buscar" class="btn btn-secondary">Agregar paciente</a>
+<a href="/buscar" class="btn btn-seconry">Modificar paciente</a>
+<a href="/buscar" class="btn btn-danger">Eliminar paciente</a>
+<br><br>
+<table class="table table-striped table-bordered bg-white table-sm">
+    <thead>
+        <td>Nombre</td>
+        <td>DNI</td>
+        <td>Obra Social</td>
+        <td>Plan</td>
+        <td>Direccion</td>
+        <td>Localidad</td>
+    </thead>
+    
+    {% for paciente in pacientes %}
+        <tr>
+            <td>{{ paciente['nombre'] }}</td>
+            <td>{{ paciente['dni'] }}</td>
+            <td>{{ paciente['social'] }}</td>
+            <td>{{ paciente['plan'] }}</td>
+            <td>{{ paciente['direccion'] }}</td>
+            <td>{{ paciente['localidad'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}
