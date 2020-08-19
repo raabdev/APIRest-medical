@@ -19,6 +19,28 @@ def pacientes():
     pacientes = cur.fetchall()
     return render_template('pacientes.html', pacientes = pacientes)
 
+@app.route('/agregar_paciente')
+def add_paciente():
+    return render_template('agregar_paciente.html')
+
+@app.route('/add_record', methods = ["POST", "GET"])
+def addrec():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        dni = request.form['dni']
+        social = request.form['social']
+        plan = request.form['plan']
+        direccion = request.form['direccion']
+        localidad = request.form['localidad']
+
+        con = sql.connect('database.db')
+        cur = con.cursor()
+
+        cur.execute("INSERT INTO pacientes (nombre,dni,social,plan,direccion,localidad) VALUES (?,?,?,?,?,?)",(nombre,dni,social,plan,direccion,localidad))
+        con.commit()
+        con.close()
+        return render_template('resultado.html')
+
 @app.route('/turnos/')
 def turnos():
     return render_template('turnos.html')

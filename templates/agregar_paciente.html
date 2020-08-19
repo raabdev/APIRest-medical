@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form action="{{ url_for('addrec') }}" method="POST">
+    <h3>Informacion del paciente</h3>
+    Nombre<br>
+    <input type="text" name="nombre"><br>
+    DNI<br>
+    <input type="text" name="dni"><br>
+    Obra Social<br>
+    <input type="text" name="social"><br>
+    Plan<br>
+    <input type="text" name="plan"><br>
+    Direccion<br>
+    <input type="text" name="direccion"><br>
+    Localidad<br>
+    <input type="text" name="localidad"><br>
+    <input type="submit" value="Agregar" class="btn btn-success">
+    <button onclick="" class="btn btn-danger">Volver</button>
+</form>
+
+{% endblock %}
