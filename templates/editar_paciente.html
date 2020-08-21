@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form action="/update/{{paciente.0}}" method="POST">
+    <h3>Informacion del paciente</h3>
+    Nombre<br>
+    <input type="text" name="nombre" value="{{ paciente.1 }}"><br>
+    DNI<br>
+    <input type="text" name="dni" value="{{ paciente.2 }}"><br>
+    Obra Social<br>
+    <input type="text" name="social" value="{{ paciente.3 }}"><br>
+    Plan<br>
+    <input type="text" name="plan" value="{{ paciente.4 }}"><br>
+    Direccion<br>
+    <input type="text" name="direccion" value="{{ paciente.5 }}"><br>
+    Localidad<br>
+    <input type="text" name="localidad" value="{{ paciente.6 }}"><br>
+    <input type="submit" value="Agregar" class="btn btn-success">
+    <button onclick="" class="btn btn-danger">Volver</button>
+</form>
+
+{% endblock %}
