@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, url_for, redirect
 import sqlite3 as sql
+import datetime
 
 
 #CREAMOS UNA INSTANCIA
@@ -43,8 +44,16 @@ def update_paciente(id):
         localidad = request.form['localidad'] 
         con = sql.connect('database.db')
         cur = con.cursor()
-        cur.execute(f"update pacientes set nombre={nombre} where id = {id}")
-        #, dni = {dni}, social = {social}, plan = {plan}, direccion = {direccion}, localidad = {localidad}
+        sql_ejecutar = """update pacientes set nombre = ?,
+                                                dni = ?,
+                                                social = ?,
+                                                plan = ?,
+                                                direccion = ?,
+                                                localidad = ?
+                                                where id = ?"""
+        data = (nombre,dni,social,plan,direccion,localidad,id)
+        cur.execute(sql_ejecutar, data)
+        con.commit()
         return redirect(url_for('pacientes'))
 
 
@@ -102,7 +111,6 @@ def asignacion_turnos():
 @app.route('/confirm_turno', methods = ["POST", "GET"])
 def confirm_turno():
     return render_template('filtrar_paciente.html')
-
 
 
 
