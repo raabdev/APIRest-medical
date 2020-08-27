@@ -4,8 +4,8 @@
 {{ practica }}
 
 <h1>Filtrar paciente</h1>
-<form action="" method="POST">
-    Practica: <input type="text" value="{{ practica }}">
+<form action="{{ url_for('filtrar') }}" method="POST">
+    Practica: <input type="text" value="{{ practica }}"> <br>
     Filtrar por nombre<br>
     <input type="text" name="dni">
     <input type="submit" value="Filtrar">

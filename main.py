@@ -112,7 +112,9 @@ def asignacion_turnos():
 def confirm_turno():
     return render_template('filtrar_paciente.html')
 
-
+@app.route('/turnos/asignacion_turnos/filtrar_paciente')
+def filtrar():
+    return 'filtrado'
 
 
 #CORREMOS LA APP
