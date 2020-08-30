@@ -87,9 +87,12 @@
                             <tr>
                                 <td>Turnos</td>
                             </tr>
+                            
                         </thead>
                         <tbody>
-                            
+                            {% for turno in turnos %}
+                            <tr><td>{{ turno['fecha-turno'] }} - {{ turno['hora'] }}</td></tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                     <div id="turno-selec1"></div>

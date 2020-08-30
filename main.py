@@ -105,8 +105,13 @@ def asignacion_turnos():
 
         return render_template('filtrar_paciente.html', pacientes = pacientes, practica = practica)
     else:
-
-        return render_template('asignacion_turnos.html')
+        con = sql.connect('database.db')
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        cur.execute("select * from turnos where disponible = 1")
+        data = cur.fetchall()
+        con.close()
+        return render_template('asignacion_turnos.html', turnos = data)
 
 @app.route('/confirm_turno', methods = ["POST", "GET"])
 def confirm_turno():
