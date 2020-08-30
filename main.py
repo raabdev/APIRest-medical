@@ -56,6 +56,16 @@ def update_paciente(id):
         con.commit()
         return redirect(url_for('pacientes'))
 
+@app.route('/resultado_turno', methods = ["POST"])
+def resultado_filtrar():
+    nombre = request.form['nombre']
+    con = sql.connect('database.db')
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute(f"SELECT * FROM pacientes WHERE nombre = '{nombre}'")
+    data = cur.fetchall()
+    con.close()
+    return render_template('pacientes_filtrados.html', pacientes = data)
 
 @app.route('/borrar/<string:id>')
 def borrar(id):

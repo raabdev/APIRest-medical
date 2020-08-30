@@ -91,7 +91,8 @@
                         </thead>
                         <tbody>
                             {% for turno in turnos %}
-                            <tr><td>{{ turno['fecha-turno'] }} - {{ turno['hora'] }}</td></tr>
+                            
+                            <tr><td><input type="radio" name="turno" value="{{ turno['id']  }}"> {{ turno['fecha-turno'] }} - {{ turno['hora'] }}</td></tr>
                             {% endfor %}
                         </tbody>
                     </table>
