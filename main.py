@@ -67,6 +67,12 @@ def resultado_filtrar():
     con.close()
     return render_template('pacientes_filtrados.html', pacientes = data)
 
+@app.route('/finalizado', methods = ["POST"])
+def final():
+    con = sql.connect('database.db')
+    cur = con.cursor()
+    cur.execute()
+
 @app.route('/borrar/<string:id>')
 def borrar(id):
     con = sql.connect('database.db')
