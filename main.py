@@ -59,19 +59,15 @@ def update_paciente(id):
 @app.route('/resultado_turno', methods = ["POST"])
 def resultado_filtrar():
     nombre = request.form['nombre']
+    idturno = request.form['idturno']
     con = sql.connect('database.db')
     con.row_factory = sql.Row
     cur = con.cursor()
     cur.execute(f"SELECT * FROM pacientes WHERE nombre = '{nombre}'")
     data = cur.fetchall()
     con.close()
-    return render_template('pacientes_filtrados.html', pacientes = data)
+    return render_template('pacientes_filtrados.html', pacientes = data, idturno = idturno)
 
-@app.route('/finalizado', methods = ["POST"])
-def final():
-    con = sql.connect('database.db')
-    cur = con.cursor()
-    cur.execute()
 
 @app.route('/borrar/<string:id>')
 def borrar(id):
@@ -110,6 +106,7 @@ def asignacion_turnos():
         
         #practica elegida
         practica = request.form['servicio1']
+        idturno = request.form['turno']
 
         #buscamos los pacientes
         con = sql.connect('database.db')
@@ -117,9 +114,11 @@ def asignacion_turnos():
         cur = con.cursor()
         cur.execute("select * from pacientes")
         pacientes = cur.fetchall()
+        cur.execute(f"select * from turnos where id = {idturno}")
+        turno_row = cur.fetchall()
+        turno = turno_row[0]
         con.close()
-
-        return render_template('filtrar_paciente.html', pacientes = pacientes, practica = practica)
+        return render_template('filtrar_paciente.html', pacientes = pacientes, practica = practica, turno = turno)
     else:
         con = sql.connect('database.db')
         con.row_factory = sql.Row
@@ -128,6 +127,10 @@ def asignacion_turnos():
         data = cur.fetchall()
         con.close()
         return render_template('asignacion_turnos.html', turnos = data)
+
+@app.route('/seleccionado/<string:id>', methods = ["GET", "POST"])
+def finalizar_turno(id):
+    return 'turno finalizado'
 
 @app.route('/confirm_turno', methods = ["POST", "GET"])
 def confirm_turno():

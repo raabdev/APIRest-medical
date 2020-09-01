@@ -5,6 +5,8 @@
 <h1>Filtrar paciente</h1>
 <form action="{{ url_for('resultado_filtrar') }}" method="POST">
     Practica: <input type="text" value="{{ practica }}"> <br>
+    Turno: {{ turno['fecha-turno'] }} - {{ turno['hora'] }} <br>
+    <input type="hidden" name="idturno" value="{{ turno['id'] }}">
     Filtrar por nombre<br>
     <input type="text" name="nombre">
     <input type="submit" value="Filtrar">
