@@ -54,6 +54,7 @@ def update_paciente(id):
         data = (nombre,dni,social,plan,direccion,localidad,id)
         cur.execute(sql_ejecutar, data)
         con.commit()
+        con.close()
         return redirect(url_for('pacientes'))
 
 @app.route('/resultado_turno', methods = ["POST"])
@@ -128,8 +129,18 @@ def asignacion_turnos():
         con.close()
         return render_template('asignacion_turnos.html', turnos = data)
 
-@app.route('/seleccionado/<string:id>', methods = ["GET", "POST"])
-def finalizar_turno(id):
+@app.route('/seleccionado/<string:id>/<string:idturno>', methods = ["GET", "POST"])
+def finalizar_turno(id, idturno):
+    print(id, idturno)
+    con = sql.connect('database.db')
+    cur = con.cursor()
+    sql_ejecutar = """update turnos set idpac = ?,
+                                    disponible = ?
+                                    where id = ?"""
+    data = (id,0,idturno)
+    cur.execute(sql_ejecutar, data)
+    con.commit()
+    con.close()
     return 'turno finalizado'
 
 @app.route('/confirm_turno', methods = ["POST", "GET"])

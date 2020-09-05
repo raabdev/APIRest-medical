@@ -26,7 +26,7 @@
             <td>{{ paciente['direccion'] }}</td>
             <td>{{ paciente['localidad'] }}</td>
             <td>
-                <a href="/seleccionado/{{ idturno }}" class="btn btn-secondary pt-1 pb-1 pr-1 pl-1">Seleccionar</a>
+                <a href="/seleccionado/{{ paciente.0 }}/{{ idturno }}" class="btn btn-secondary pt-1 pb-1 pr-1 pl-1">Seleccionar</a>
             </td>
         </tr>
     {% endfor %}
