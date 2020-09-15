@@ -133,6 +133,7 @@ def asignacion_turnos():
 def finalizar_turno(id, idturno):
     print(id, idturno)
     con = sql.connect('database.db')
+    con.row_factory = sql.Row
     cur = con.cursor()
     sql_ejecutar = """update turnos set idpac = ?,
                                     disponible = ?
@@ -140,8 +141,14 @@ def finalizar_turno(id, idturno):
     data = (id,0,idturno)
     cur.execute(sql_ejecutar, data)
     con.commit()
+    cur.execute(f"select * from pacientes where id = {id}")
+    paciente = cur.fetchall()
+    cur.execute(f"select * from turnos where id = {idturno}")
+    turno = cur.fetchall()
     con.close()
-    return 'turno finalizado'
+    print(paciente)
+    print(turno)
+    return render_template('turno_finalizado.html', paciente = paciente, turno = turno)
 
 @app.route('/confirm_turno', methods = ["POST", "GET"])
 def confirm_turno():
