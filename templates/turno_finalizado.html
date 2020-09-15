@@ -2,6 +2,12 @@
 {% block content %}
 
 <h1>Datos del paciente</h1>
-Nombre
+Nombre: <br> <input type="text" value="{{ paciente.0['nombre'] }}" required> <br>
+Fecha de nacimiento: <br> <input type="text" value="{{ paciente.0['nacimiento'] }}" required> <br>
+Telefono celular: <br> <input type="text" value="{{ paciente.0['telefono'] }}" required> <br>
+Institucion Cliente: <br> <input type="text" value="{{ paciente.0['social'] }}" required> <br>
+Plan: <br> <input type="text" value="{{ paciente.0['plan'] }}" required> <br>
+Fecha orden medica: <br> <input type="text" value="{{ turno.0['fecha-turno'] }} -- {{ turno.0['hora'] }}" required> <br>
+Diagnostico: <br> <input type="text" value="{{ turno.0['diagnostico'] }}" required> <br>
 
 {% endblock %}
