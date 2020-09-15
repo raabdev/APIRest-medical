@@ -2,12 +2,19 @@
 {% block content %}
 
 <h1>Datos del paciente</h1>
-Nombre: <br> <input type="text" value="{{ paciente.0['nombre'] }}" required> <br>
-Fecha de nacimiento: <br> <input type="text" value="{{ paciente.0['nacimiento'] }}" required> <br>
-Telefono celular: <br> <input type="text" value="{{ paciente.0['telefono'] }}" required> <br>
-Institucion Cliente: <br> <input type="text" value="{{ paciente.0['social'] }}" required> <br>
-Plan: <br> <input type="text" value="{{ paciente.0['plan'] }}" required> <br>
-Fecha orden medica: <br> <input type="text" value="{{ turno.0['fecha-turno'] }} -- {{ turno.0['hora'] }}" required> <br>
-Diagnostico: <br> <input type="text" value="{{ turno.0['diagnostico'] }}" required> <br>
+<form action="" method="POST">
+    Nombre: <br> <input type="text" name="nombre" value="{{ paciente.0['nombre'] }}" required> <br>
+    Fecha de nacimiento: <br> <input type="text" name="fecha-nac" value="{{ paciente.0['nacimiento'] }}" required> <br>
+    Telefono celular: <br> <input type="text" name="telefono" value="{{ paciente.0['telefono'] }}" required> <br>
+    Institucion Cliente: <br> <input type="text" name="social" value="{{ paciente.0['social'] }}" required> <br>
+    Plan: <br> <input type="text" name="plan" value="{{ paciente.0['plan'] }}" required> <br>
+    Fecha orden medica: <br> <input type="text" name="fecha" value="{{ turno.0['fecha-turno'] }} -- {{ turno.0['hora'] }}" required> <br>
+    Diagnostico: <br> <input type="text" name="diagnostico" value="{{ turno.0['diagnostico'] }}" required> <br> <br>
+    <input type="hidden" name="idturno" value="{{ turno.0['id'] }}">
+    <input type="hidden" name="id" value="{{ paciente.0['id'] }}">
+    <input type="submit" value="Aceptar" class="btn btn-primary"> <a href="" class="btn btn-danger">Cancelar</a>
+</form>
+
+
 
 {% endblock %}

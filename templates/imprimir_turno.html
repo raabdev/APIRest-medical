@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+Estimado paciente "{{ paciente.0['nombre'] }}" <br>
+Su turno para {{ turno.0['diagnostico'] }} es el día <br>
+<strong>{{ turno.0['fecha-turno'] }} a las {{ turno.0['hora'] }} hs.</strong> <br>
+Preparacion: {{ turno.0['preparacion'] }} <br> <br>
+
+En caso de no concurrir al mismo, por favor dar aviso con anticipacion <br> <br>
+
+<button type="button" onclick="javascript:window.print()" class="btn btn-success">Imprimir</button>
+
+<a href="/" class="btn btn-danger">Salir</a>
+
+{% endblock %}

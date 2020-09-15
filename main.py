@@ -131,6 +131,41 @@ def asignacion_turnos():
 
 @app.route('/seleccionado/<string:id>/<string:idturno>', methods = ["GET", "POST"])
 def finalizar_turno(id, idturno):
+    if request.method == "POST":
+        nombre = request.form['nombre']
+        fecha_nac = request.form['fecha-nac']
+        telefono = request.form['telefono']
+        social = request.form['social']
+        plan = request.form['plan']
+        fecha = request.form['fecha']
+        diagnostico = request.form['diagnostico']
+        id = request.form['id']
+        idturno = request.form['idturno']
+        data = (nombre,fecha_nac,telefono,social,plan,id)
+
+        con = sql.connect('database.db')
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        sql_ejecutar = """update pacientes set nombre = ?,
+                                        nacimiento = ?,
+                                        telefono = ?,
+                                        social = ?,
+                                        plan = ?
+                                        where id = ?"""
+        cur.execute(sql_ejecutar,data)
+        con.commit()
+        sql_ejecutar = """update turnos set idpac = ?,
+                                    disponible = ?
+                                    where id = ?"""
+        data = (id,0,idturno)
+        cur.execute(sql_ejecutar, data)
+        con.commit()
+        cur.execute(f"select * from pacientes where id = {id}")
+        paciente = cur.fetchall()
+        cur.execute(f"select * from turnos where id = {idturno}")
+        turno = cur.fetchall()
+        con.close()
+        return render_template('imprimir_turno.html', paciente = paciente, turno = turno)
     print(id, idturno)
     con = sql.connect('database.db')
     con.row_factory = sql.Row
@@ -139,8 +174,8 @@ def finalizar_turno(id, idturno):
                                     disponible = ?
                                     where id = ?"""
     data = (id,0,idturno)
-    cur.execute(sql_ejecutar, data)
-    con.commit()
+    #cur.execute(sql_ejecutar, data)
+    #con.commit()
     cur.execute(f"select * from pacientes where id = {id}")
     paciente = cur.fetchall()
     cur.execute(f"select * from turnos where id = {idturno}")
@@ -149,6 +184,7 @@ def finalizar_turno(id, idturno):
     print(paciente)
     print(turno)
     return render_template('turno_finalizado.html', paciente = paciente, turno = turno)
+
 
 @app.route('/confirm_turno', methods = ["POST", "GET"])
 def confirm_turno():
